@@ -69,10 +69,10 @@ class CartController extends Controller
 
     // }
 
-    // public function cartStore(Request $request)
-    // {
-    //     dd ($request->all());
-    // }
+    public function cartStores(Request $request)
+    {
+        dd ($request->all());
+    }
 
 
     public function updateOne(Request $request)
