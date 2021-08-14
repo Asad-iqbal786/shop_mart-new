@@ -16,7 +16,8 @@ class CartController extends Controller
     }
 
     public function cartStore(Request $request)
-    {// dd($request->all());
+    {
+        // dd($request->all());
         $product_qty=$request->input('product_qty');
         $product_id=$request->input('product_id');
         $product=Product::getProductByCart($product_id);
