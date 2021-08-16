@@ -72,6 +72,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin','verified']]
     Route::get('/product_status', [\App\Http\Controllers\ProductController::class, 'product.status'])->name('banner.status');
     // Product Attributes
     Route::Post('product_attributes/{id}', [\App\Http\Controllers\ProductController::class, 'productAttributes'])->name('product.attributes');
+    Route::Post('get-product-price', [\App\Http\Controllers\indexController::class, 'getProductByPrice'])->name('get-product-price');
+
+    
+    // Route::delete('product_delete/{id}', [\App\Http\Controllers\ProductController::class, 'productAttributesDelete'])->name('product_attributes_delete');
+
+    
     Route::Post('category/{id}/child', [\App\Http\Controllers\CagtegoryController::class, 'getChildByParentID'])->name('category.status');
     // User Sections
     Route::resource('user','UserController');

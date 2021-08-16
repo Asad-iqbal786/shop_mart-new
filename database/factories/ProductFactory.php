@@ -40,7 +40,7 @@ class ProductFactory extends Factory
             'child_cat_id'=>$this->faker->randomElement(Category::where('is_parent',0)->pluck('id')->toArray()),
 
             'photo'=>$this->faker->imageUrl('400','400'),
-            'price'=>$this->faker->numberBetween(1000,5000),
+            'price'=>$this->faker->numberBetween(100,5000),
             'offer_price'=>$this->faker->numberBetween(1500,4500),
             'discount'=>$this->faker->randomElement(Category::pluck('id')->toArray()),
             'size'=>$this->faker->randomElement(['S','M','L']),

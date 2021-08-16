@@ -105,6 +105,8 @@ class ProductController extends Controller
 
 
     }
+
+
     public function productAttributes(Request $request,$id)
     {
         // return $request->all();
@@ -123,7 +125,7 @@ class ProductController extends Controller
         //         $attribute['stock']=$data['stock'][$key];
         //         $attribute['product_id']=$id;
         //         $attribute['size']=$data['size'][$key];
-        //         $attribute->save();
+        //         $         b->save();
         //     }
         // }
         $product=Product::all();
@@ -138,6 +140,22 @@ class ProductController extends Controller
         
         return redirect()->back()->with('product',$product);
     }
+
+
+    public function productAttributesDelete($id)
+    {
+        $productAttribute=ProductAttribute::find($id);
+        $status=$productAttribute->delete();
+        if($status){
+            request()->session()->flash('success','Banner successfully deleted');
+        }
+        else{
+            request()->session()->flash('error','Error occurred while deleting banner');
+        }
+        return redirect()->back();
+    }
+
+    
 
   
     public function show($id)

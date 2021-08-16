@@ -52,6 +52,8 @@
         <th>Org.Price</th>
         <th>Of.Price</th>
         <th>Stock</th>
+        <th>Action</th>
+
       </tr>
     </thead>
     <tbody>
@@ -61,6 +63,14 @@
         <td>{{$item->offer_price}}</td>
         <td>{{$item->stock}}</td>
         <td>{{$item->original_price}}</td>
+        {{-- <td>
+        <form method="POST" action="{{route('product_attributes_delete',[$item->id])}}">
+          @csrf 
+          @method('delete')
+              <button class="btn btn-danger btn-sm dltBtn" data-id={{$item->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
+            </form>
+        </td> --}}
+
       </tr> 
       @endforeach
     </tbody>

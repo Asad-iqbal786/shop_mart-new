@@ -184,11 +184,7 @@
 
 <script>
     $(document).ready(function(){
-      $.ajaxSetup({
-          headers: {
-              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-          }
-      });
+     
         $('.dltBtn').click(function(e){
           var form=$(this).closest('form');
             var dataID=$(this).data('id');

@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Brand;
 use App\User;
+use App\Models\ProductAttribute;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -119,15 +120,26 @@ class indexController extends Controller
         // dd ($slug);
         $products= Product::with('rel_prods')->where('slug',$slug)->first();
         // dd($product_detail);
+        $productAttribute= ProductAttribute::all();
         if('$product'){
-            return view('frontend.pages.product_detail',compact('products'));
+            return view('frontend.pages.product_detail',compact('products','productAttribute'));
         }
         else{
             return 'Product details not found.';
         }
     }
 
+    public function getProductByPrice(Request $request)
+    {
+        if($request->ajax()){
+            $data= $request->all();
+            echo "<pre>"; print_r($data); die;
+            
+            $getProductPrice= ProductAttribute::where(['product-id'=>$data['product_id'],'size'=>$data['size']])->first();
+            return $getProductPrice->price;
 
+        }
+    }
 
 
 

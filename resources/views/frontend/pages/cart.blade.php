@@ -45,12 +45,12 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td data-th="Price">${{ $details['stock'] }}</td>
+                                    <td data-th="Price">${{ $details['price'] }}</td>
                                     <td data-th="stock">
                                         <input type="number" value="{{ $details['stock'] }}" class="form-control stock update-cart" />
                                         
                                     </td>
-                                    <td data-th="Subtotal" class="text-center">$@php $total += $details['price'] * $details['stock'] @endphp</td>
+                                    <td data-th="Subtotal" class="text-center">${{ $details['price'] * $details['stock'] }}</td>
                                     <td class="actions" data-th="">
                                         <button class="btn btn-danger btn-sm remove-from-cart"><i class="fa fa-trash-o"></i></button>
                                     </td>

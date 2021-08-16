@@ -62,16 +62,30 @@
                             </div>
                             <!--/ End Color -->
                             <!-- Size -->
+                            {{-- <div class="size">
+                                <h4>Size</h4>
+                                <ul name="seiz" id="getPrice">
+                                    @foreach ($productAttribute as $productAttribute)
+                                    <li><option value="{{$productAttribute->size}}">{{$productAttribute->size}}</option></li>
+                                    @endforeach
+                                
+                                </ul>
+                            </div> --}}
+
+
+
                             <div class="size">
                                 <h4>Size</h4>
-                                <ul>
-                                    <li><a href="#" class="one">S</a></li>
-                                    <li><a href="#" class="two">M</a></li>
-                                    <li><a href="#" class="three">L</a></li>
-                                    <li><a href="#" class="four">XL</a></li>
-                                    <li><a href="#" class="four">XXL</a></li>
-                                </ul>
+                                    <select name="seiz" id="getPrice" product-id="{{$products->id}}" class="form-control">
+                                        @foreach ($productAttribute as $productAttribute)
+                                            <option value="{{$productAttribute->size}}">{{$productAttribute->size}}</option>
+                                        @endforeach
+                                    </select>
                             </div>
+
+
+
+
                             <!--/ End Size -->
                             <!-- Product Buy -->
                             <div class="product-buy">
@@ -314,5 +328,37 @@
 @endsection
 @push('styles')
 @endpush
-@push('scripts')
-@endpush
+
+@section('scripts')
+<script>
+$(document).on('click',function(e){
+    $("#getPrice").change(function(){
+        var size = $(this).val();
+        var product_id = $(this).attr("product-id")
+        // alert(product_id);
+        var token= '@csrf';
+        var path="{{route('get-product-price')}}";
+        $.aja({
+            url:path,
+            data:{size:size,product_id:product_id},
+            type:"post",
+            success:function(resp){
+                alert(resp);
+                // $("getAttrPrice").html("Rs. "+resp);
+            },error:function(){
+                alert("Error");
+            }
+        });
+        
+    });
+});
+
+
+
+
+
+
+    
+</script>
+
+@endsection
